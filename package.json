@@ -1,0 +1,37 @@
+{
+  "name": "techblog-mvc",
+  "version": "1.0.0",
+  "description": "A tech blog application with session login,handlebars,and sequelize",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasdjames/TechBlog-MVC.git"
+  },
+  "keywords": [
+    "Blog"
+  ],
+  "author": "JasDJames",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jasdjames/TechBlog-MVC/issues"
+  },
+  "homepage": "https://github.com/jasdjames/TechBlog-MVC#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.1",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "prettier": "^2.2.1"
+  }
+}
