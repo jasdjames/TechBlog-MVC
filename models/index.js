@@ -20,7 +20,15 @@ onUpdate: 'CASCADE'
 
 })
 
-Comments.belongsTo(Users,{
+Comments.belongsToMany(Users,{
+through:{
+    
+model:Posts,
+foreignKey:"postId",
+foreignKey: "userId",
+},
+onDelete: 'CASCADE',
+onUpdate: 'CASCADE', 
 
 
 })
