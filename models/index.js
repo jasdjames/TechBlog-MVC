@@ -1,11 +1,11 @@
-const Session = require()
-const Users = require()
-const Posts = require()
-const Comments = require ()
+const Session = require('./Session')
+const Users = require('./Users')
+const Posts = require('./Posts')
+const Comments = require ('./Comments')
 
 
 
-Users.hasMany(Post,Comments{
+Users.hasMany(Posts,Comments{
 
 })
 
@@ -13,7 +13,7 @@ Posts.hasMany(Comments,{
 
 })
 
-Post.belongsTo(Users,{
+Posts.belongsTo(Users,{
 foreignKey:"userId",
 onDelete: 'CASCADE',
 onUpdate: 'CASCADE'
@@ -29,4 +29,4 @@ Session.belongsTo(Users,{
 foreignKey:"sid"
 })
 
-module.exports = {Users, Post, Comments, Session}
+module.exports = {Users, Posts, Comments, Session}
