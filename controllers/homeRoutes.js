@@ -99,7 +99,7 @@ router.post('/saveBlog', (req, res) => {
 });
 
 router.get('/dashboard', (req, res) => {
-  Posts.find({
+  Posts.findAll({
     where: {
       userId: req.session.userId,
     },
