@@ -1,11 +1,15 @@
-const Session = require('./Session');
 const Users = require('./Users');
 const Posts = require('./Posts');
 const Comments = require('./Comments');
 
-Users.hasMany(Posts, Comments, {});
-
-Posts.hasMany(Comments, {});
+// Users.hasMany(Posts, {
+//   foreignKey: 'userId',
+// });
+Posts.hasMany(Comments, {
+  foreignKey: 'postID',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+});
 
 Posts.belongsTo(Users, {
   foreignKey: 'userId',
@@ -13,18 +17,26 @@ Posts.belongsTo(Users, {
   onUpdate: 'CASCADE',
 });
 
-Comments.belongsToMany(Users, {
-  through: {
-    model: Posts,
-    foreignKey: 'postId',
-    foreignKey: 'userId',
-  },
+Comments.belongsTo(Users, {
+  foreignKey: 'userId',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
 
-Session.belongsTo(Users, {
-  foreignKey: 'sid',
+Comments.belongsTo(Posts, {
+  foreignKey: 'postId',
 });
 
-module.exports = { Users, Posts, Comments, Session };
+// Comments.belongsToMany(Users, {
+//   through: {
+//     model: Posts,
+//     foreignKey: 'postId',
+//     foreignKey: 'userId',
+//   },
+// });
+
+// Session.belongsTo(Users, {
+//   foreignKey: 'sid',
+// });
+
+module.exports = { Users, Posts, Comments };
