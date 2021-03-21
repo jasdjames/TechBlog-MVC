@@ -1,0 +1,17 @@
+<div>
+<h1>
+    ALL BLOGS!
+</h1>
+
+</div>
+
+{{#if logged_in}}
+{{#each this}}
+
+    <div class="card-title"><div class="card" id="postDiv"> {{body.title}}</div>
+    <div class="card-body"><div id="postDive"></div>{{body.text}}</div>
+{{body}}
+{{post.title}}
+{{post.body}}
+{{/each}}
+{{/if}}

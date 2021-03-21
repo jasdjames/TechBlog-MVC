@@ -4,7 +4,10 @@ const router = require('express').Router();
 const { Comments, Posts, Users } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+// router.get('/', (res, req) => {
+//   res.render('home');
+// });
+router.get('/', withAuth, async (req, res) => {
   try {
     // Get all sessions and JOIN with user data
     const pData = await Posts.findAll({
@@ -17,12 +20,13 @@ router.get('/', async (req, res) => {
 
     // Serialize data so the template can read it
     const post = pData.map((post) => post.get({ plain: true }));
-
+    console.log('this is the post', post);
     // Pass serialized data and session flag into template
-    res.render('home', {
-      post,
-      logged_in: req.session.logged_in,
-    });
+    res.render('allBlogs', { post });
+    // res.render('allBlogs', {
+    //   post,
+    //   logged_in: req.session.logged_in,
+    // });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -30,15 +34,15 @@ router.get('/', async (req, res) => {
 
 router.get('/post/:id', async (req, res) => {
   try {
-    const pData = await Project.findByPk(req.params.id, {
+    const pData = await Posts.findByPk(req.params.id, {
       include: [
         {
-          model: User,
+          model: Users,
         },
       ],
     });
 
-    const post = projectData.get({ plain: true });
+    const post = postData.get({ plain: true });
 
     res.render('post', {
       ...post,
@@ -98,7 +102,7 @@ router.post('/saveBlog', (req, res) => {
   });
 });
 
-router.get('/dashboard', (req, res) => {
+router.get('/allBlogs', (req, res) => {
   Posts.findAll({
     where: {
       userId: req.session.userId,
@@ -107,9 +111,37 @@ router.get('/dashboard', (req, res) => {
     var hbsObj = {
       posts: AllPosts,
     };
+    console.log('This is the object?', hbsObj);
 
-    res.render('dashboard', hbsObj);
+    res.render('allBlogs', hbsObj);
   });
 });
+
+// router.get('/allBlogs', async (req, res) => {
+//   try {
+//     // Get all sessions and JOIN with user data
+//     const pData = await Posts.findAll({
+//       // include: [
+//       //   {
+//       //     model: Users,
+//       //   },
+//       // ],
+
+//       where: {
+//               userId: req.session.userId,
+
+//       },
+//     });
+
+//     // Serialize data so the template can read it
+//     const post = pData.map((post) => post.get({ plain: true }));
+// console.log('this is post',post);
+//     // Pass serialized data and session flag into template
+//     res.render('allBlogs', {
+//       post
+//     });
+
+//   } catch (err) {
+//     res.status(500).json(err);
 
 module.exports = router;

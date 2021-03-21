@@ -32,8 +32,9 @@
         <a class="navbar-brand" href="#">TechBlog</a>
 
 {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a href="/profile">profile</a> 
+        <button type="button" class="btn btn-primary m-1 " id="logout">logout</button>
+        <button type="button" class='btn btn-success m-1' id="dashboard">dashboard</button>
         {{else}}
         <a href="/login">Login or Sign Up</a>
         {{/if}}
@@ -67,7 +68,7 @@
         </div> --}}
       </nav>
       <div class="jumbotron">
-        <!-- This may be handlebars to change page name  -->
+        
         <h1 class="display-4">TechBlog</h1>
         <p class="lead">Your tech blog for all your tech blog needs</p>
         <hr class="my-4" />

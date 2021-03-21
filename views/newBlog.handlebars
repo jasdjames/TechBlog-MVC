@@ -1,16 +1,17 @@
 <div class="card">
    <div class="card-title">
-       Title
    </div> 
   <div class="card-body">
      <div class="form-group">
          <h1> Title for Blog Post!</h1>
          <input id="blogTitle"></input>
-    <label for="exampleFormControlTextarea1">textarea</label>
-    <textarea class="form-control" id="blogBody" rows="3"></textarea>
+         <hr>
+    <label for="exampleFormControlTextarea1">
+        <h1>Post your thoughts here!!</h1></label>
+    <textarea class="form-control m-3" id="blogBody" rows="3"></textarea>
   </div>
 </form>
-<button class="primary" id="saveBtn" >Save</button>
+<button  type="button"  class="btn btn-primary" id="saveBtn" >Save</button>
   </div>
 </div>
 
@@ -23,6 +24,7 @@
             headers: { 'Content-Type': 'application/json' },
         }).then(function() {
             console.log('.then of fetch!!')
+         
         })
     })
 </script>
