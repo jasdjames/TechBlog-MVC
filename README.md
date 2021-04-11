@@ -42,7 +42,7 @@ no tests were completes for this project
 
 Please contact me for any questions
 [jasdjames]
-(https://github.com/jasdjame)
+(https://github.com/jasdjames)
 jasdjames@gmail.com
 
 ## License
